@@ -1,5 +1,5 @@
-var strUp = "GHIJKLMNOPQRSTUVWXYZ".split(""); var strUpLen = strUp.length;
-var strLow = "ghijklmnopqrstuvwxyz".split(""); var strLowLen = strLow.length;
+var strUp = "GHIJKLMNOPQRSTUVWXYZ".split("");                //TODO [g-z] error fix
+var strLow = "ghijklmnopqrstuvwxyz".split("");              //      oct and binary exp fix
 
 Object.prototype.in = function() {
     for(var i=0; i<arguments.length; i++)
@@ -25,7 +25,10 @@ console.log("\nConvert from: \t\tTo:\n(1) for Base 10\t\t(a) for Base 10 \n(2) f
 function selcBase() {
 rl.question("\nYour selection? ", function(answer) {
 
-  if ((answer == "")||(noWhiteSpace(answer))) {
+  var fromSelc = answer.charAt(0); 
+  var toSelc = answer.charAt(2);
+
+  if ((answer == "")||(noWhiteSpace(answer))|| fromSelc.in("1","2","3","4") == false || toSelc.in("a","b","c","d") == false) {
     console.log("\nInvalid selection.");
     selcBase();
     return;
